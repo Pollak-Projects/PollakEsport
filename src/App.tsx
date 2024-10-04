@@ -3,15 +3,23 @@ import "primereact/resources/themes/lara-dark-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import Games from "./pages/Games";
-import NotFound from "./pages/NotFound";
-import GameInfo from "./pages/GameInfo";
+import { lazy, Suspense } from "react";
+import { ProgressSpinner } from "primereact/progressspinner";
+
+const Layout = lazy(() => import("./pages/Layout"));
+const Games = lazy(() => import("./pages/Games"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const GameInfo = lazy(() => import("./pages/GameInfo"));
+const Home = lazy(() => import("./pages/Home"));
 
 function App() {
   return (
-    <>
+    <Suspense fallback={
+    <div className="w-full h-full flex justify-center items-center">
+    <ProgressSpinner 
+    />
+    </div>
+   }>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -22,7 +30,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </Suspense>
   );
 }
 
