@@ -43,12 +43,12 @@ const Nav = () => {
       model={items}
       end={
         <div className="flex items-center  gap-2">
-          <div className="bg-gray-800 flex justify-center items-center">
-            <i className="pi pi-search px-2"></i>
+          <div className="bg-gray-800 flex justify-center items-center rounded-xl">
+            <i className="pi pi-search px-3"></i>
             <InputText
               placeholder="Keresés"
               type="text"
-              className="bg-gray-800 p-2 focus:border-none"
+              className="bg-gray-800 p-2"
             />
           </div>
           <Avatar icon="pi pi-user" shape="circle" />
