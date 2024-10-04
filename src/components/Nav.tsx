@@ -1,17 +1,21 @@
 import { Avatar } from "primereact/avatar";
 import { InputText } from "primereact/inputtext";
 import { Menubar } from "primereact/menubar";
+import { useNavigate } from "react-router-dom";
+
 const Nav = () => {
+  const navigate = useNavigate();
+
   const items = [
     {
       label: "Home",
       icon: "pi pi-home",
-      url: "/",
+      command: () => navigate("/"),
     },
     {
       label: "Játékok",
       icon: "pi pi-list",
-      url: "/games",
+      command: () => navigate("/games"),
     },
     {
       label: "Projects",
@@ -30,26 +34,7 @@ const Nav = () => {
           label: "UI Kit",
           icon: "pi pi-pencil",
         },
-        {
-          label: "Templates",
-          icon: "pi pi-palette",
-          items: [
-            {
-              label: "Apollo",
-              icon: "pi pi-palette",
-            },
-            {
-              label: "Ultima",
-              icon: "pi pi-palette",
-            },
-          ],
-        },
       ],
-    },
-    {
-      label: "Contact",
-      disabled: true,
-      icon: "pi pi-envelope",
     },
   ];
 
