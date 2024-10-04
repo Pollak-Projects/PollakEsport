@@ -11,6 +11,9 @@ const Games = lazy(() => import("./pages/Games"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const GameInfo = lazy(() => import("./pages/GameInfo"));
 const Home = lazy(() => import("./pages/Home"));
+const AdminLayout = lazy(() => import("./pages/admin/AdminLayout"));
+const Dashboard = lazy(() => import("./pages/admin/Dashboard"));
+const ListTeam = lazy(() => import("./pages/admin/Teams"));
 
 function App() {
   return (
@@ -26,6 +29,11 @@ function App() {
             <Route index element={<Home />} />
             <Route path="games" element={<Games />} />
             <Route path="games/*" element={<GameInfo />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="" element={<Dashboard />} />
+            <Route path="teams" element={<ListTeam />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
