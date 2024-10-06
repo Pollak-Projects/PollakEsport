@@ -1,12 +1,16 @@
 import { Avatar } from "primereact/avatar";
 import { InputText } from "primereact/inputtext";
 import { Menubar } from "primereact/menubar";
+import { useNavigate } from "react-router-dom";
+
 const Nav = () => {
+  const navigate = useNavigate();
+
   const items = [
     {
       label: "Home",
       icon: "pi pi-home",
-      url: "/",
+      command: () => navigate("/"),
     },
     {
       label: "Játékok",
@@ -65,21 +69,22 @@ const Nav = () => {
   ];
 
   return (
-    <div>
-      <Menubar
-        model={items}
-        end={
-          <div className="flex items-center  gap-2">
+    <Menubar
+      model={items}
+      end={
+        <div className="flex items-center gap-2">
+          <div className="bg-gray-800 flex justify-center items-center rounded-xl">
+            <i className="pi pi-search px-3"></i>
             <InputText
-              placeholder="Search"
+              placeholder="Keresés"
               type="text"
-              className="bg-gray-800 p-2"
+              className="bg-gray-800 p-2 border-none"
             />
-            <Avatar icon="pi pi-user" shape="circle" />
           </div>
-        }
-      />
-    </div>
+          <Avatar icon="pi pi-user" shape="circle" />
+        </div>
+      }
+    />
   );
 };
 
